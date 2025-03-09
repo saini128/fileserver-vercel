@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # Base URL for downloads
-BASE_URL="https://files.singhropar.com"
+BASE_URL="https://files.singhropar.com/gitswift/leaf_folder"
+LEVEL_UP_URL="https://files.singhropar.com/gitswift/menu.sh"
 
 # Files and folders
 FILES=(
-    "base.txt"
+    "leaf.txt"
 )
 FOLDERS=(
-    "gitswift"
 )
 
 # Menu Loop
@@ -27,8 +27,8 @@ while true; do
         echo "$((folder_start_index + i)): ${FOLDERS[i]}/"
     done
 
-    # Exit option (Fixed)
-    exit_index=$((folder_start_index + ${#FOLDERS[@]}))  # Corrected exit index
+    # Exit option
+    exit_index=$((folder_start_index + ${#FOLDERS[@]}))
     echo "$exit_index. Exit"
 
     # Get user input
@@ -59,8 +59,8 @@ while true; do
         bash <(curl -s "$BASE_URL/$SELECTED_FOLDER/menu.sh")
         sleep 2
 
-    # Exit option (Corrected condition)
-    elif [[ choice -eq exit_index ]]; then
+    # Exit option
+    elif [[ $index -eq $exit_index ]]; then
         echo "Exiting..."
         exit 0
 
