@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Base URL for downloads
-BASE_URL="https://files.singhropar.com"
+BASE_URL="http://localhost:5555"
 
 # Files and folders
 FILES=(
@@ -28,7 +28,7 @@ while true; do
     done
 
     # Exit option (Fixed)
-    exit_index=$((folder_start_index + ${#FOLDERS[@]}))  # Corrected exit index
+    exit_index=$((folder_start_index + ${#FOLDERS[@]}))
     echo "$exit_index. Exit"
 
     # Get user input
@@ -43,7 +43,6 @@ while true; do
 
     # Convert to index
     index=$((choice - 1))
-
     # File selection handling
     if [[ $index -ge 0 && $index -lt ${#FILES[@]} ]]; then
         FILE_NAME="${FILES[$index]}"
@@ -52,15 +51,15 @@ while true; do
         sleep 2
 
     # Folder selection handling
-    elif [[ $index -ge ${#FILES[@]} && $index -lt $exit_index ]]; then
+    elif [[ $index -ge ${#FILES[@]} && $index -lt $exit_index-1 ]]; then
         folder_index=$((index - ${#FILES[@]}))
         SELECTED_FOLDER="${FOLDERS[$folder_index]}"
         echo "Entering $SELECTED_FOLDER..."
-        bash <(curl -s "$BASE_URL/$SELECTED_FOLDER/menu.sh")
-        sleep 2
+        exec bash <(curl -s "$BASE_URL/$SELECTED_FOLDER/menu.sh")
+        
 
-    # Exit option (Corrected condition)
-    elif [[ choice -eq exit_index ]]; then
+    # Exit option (Corrected)
+    elif [[ $index -le $exit_index ]]; then
         echo "Exiting..."
         exit 0
 
