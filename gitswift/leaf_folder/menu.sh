@@ -53,6 +53,7 @@ while true; do
         FILE_NAME="${FILES[$index]}"
         echo "Downloading $FILE_NAME..."
         curl -O "$BASE_URL/$FILE_NAME" && echo "✅ Download Complete!" || echo "❌ Download Failed!"
+        sleep 2
 
     # Folder selection handling
     elif [[ $index -ge ${#FILES[@]} && $index -lt $exit_index-1 ]]; then
