@@ -1,7 +1,5 @@
-#!/bin/bash
-
 # Base URL for downloads
-BASE_URL="http://localhost:5555"
+BASE_URL="https://files.singhropar.com"
 
 # Files and folders
 FILES=(

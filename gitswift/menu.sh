@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Base URL for downloads
-BASE_URL="http://localhost:5555/gitswift"
-PARENT_FOLDER_URL="http://localhost:5555/menu.sh"
+BASE_URL="https://files.singhropar.com/gitswift"
+PARENT_FOLDER_URL="https://files.singhropar.com/menu.sh"
 
 # Files and folders
 FILES=(
